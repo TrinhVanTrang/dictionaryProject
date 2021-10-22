@@ -28,6 +28,10 @@ public class Dictionary {
         wordList.add(word);
     }
 
+    public void addWordList(int index, Word word) {
+        wordList.add(index,word);
+    }
+
     public void deleteWordList(int index) {
         wordList.remove(index);
     }

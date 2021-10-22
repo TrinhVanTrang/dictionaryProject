@@ -20,7 +20,8 @@ public class DictionaryManagement {
 
     //sap xep tu dien
     public static void sortDictionary(Dictionary dictionary) {
-        CommonFunction.sortListWord(dictionary.getWordList());
+        //CommonFunction.sortListWord(dictionary.getWordList());
+        CommonFunction.quickSort(dictionary.getWordList(),0,dictionary.getWordList().size()-1);
     }
 
     //tim kiem tu
@@ -28,11 +29,39 @@ public class DictionaryManagement {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Nhap tu muon tim kiem: ");
         String search = scanner.nextLine();
-        Word word = CommonFunction.search(dictionary.getWordList(), search);
-        if (word != null) {
-            System.out.println("Nghia cua tu " + word.getWord_target() + " la: " + word.getWord_explain());
-        } else {
+        int index=CommonFunction.BNSToIndex(dictionary.getWordList(),search);
+        if(index>dictionary.getWordList().size()) {
             System.out.println("Tu " + search + " khong co trong tu dien.");
+        } else {
+            Word word=dictionary.getWordList().get(index);
+            if (word.getWord_target().equals(search)) {
+                System.out.println("Nghia cua tu " + word.getWord_target() + " la: " + word.getWord_explain());
+            } else {
+                System.out.println("Tu " + search + " khong co trong tu dien.");
+            }
+        }
+
+    }
+
+    public static Vector<Word> seachWordList(Dictionary dictionary) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Nhap tu muon tim kiem: ");
+        String search = scanner.nextLine();
+        int index=CommonFunction.BNSToIndex(dictionary.getWordList(),search);
+        if(index<dictionary.getWordList().size()&&dictionary.getWordList().get(index).getWord_target().startsWith(search)) {
+            Word word=dictionary.getWordList().get(index);
+            String string=word.getWord_target();
+            Vector<Word> result=new Vector<Word>();
+            int i=index;
+            while (string.startsWith(search)) {
+                result.add(dictionary.getWordList().get(i));
+                i++;
+                string=dictionary.getWordList().get(i).getWord_target();
+            }
+            return result;
+        } else {
+            System.out.println("Khong tim thay!");
+            return null;
         }
     }
 
@@ -41,14 +70,15 @@ public class DictionaryManagement {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Nhap tu muon them vao tu dien: ");
         String target = scanner.nextLine();
-        Word word = CommonFunction.search(dictionary.getWordList(), target);
-        if (word != null) {
+        int index=CommonFunction.BNSToIndex(dictionary.getWordList(),target);
+        if (index<dictionary.getWordList().size()&&dictionary.getWordList().get(index).getWord_target().equals(target)) {
+            Word word = dictionary.getWordList().get(index);
             System.out.println("Tu " + word.getWord_target() + " da co trong tu dien.");
             System.out.println("Nghia cua tu " + word.getWord_target() + " la: " + word.getWord_explain());
         } else {
             System.out.print("Nhap nghia cua tu " + target + ": ");
             String explain = scanner.nextLine();
-            dictionary.addWordList(new Word(target, explain));
+            dictionary.addWordList(index,new Word(target, explain));
             System.out.println("Tu " + target + " da duoc them vao tu dien.");
             sortDictionary(dictionary);
         }
@@ -59,9 +89,9 @@ public class DictionaryManagement {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Nhap tu muon xoa khoi tu dien: ");
         String target = scanner.nextLine();
-        Word word = CommonFunction.search(dictionary.getWordList(), target);
-        int index = CommonFunction.searchToIndex(dictionary.getWordList(), target);
-        if (index >= 0) {
+        int index = CommonFunction.BNSToIndex(dictionary.getWordList(), target);
+        if (index<dictionary.getWordList().size()&&dictionary.getWordList().get(index).getWord_target().equals(target)) {
+            Word word = dictionary.getWordList().get(index);
             System.out.println(word.getWord_target() + ": " + word.getWord_explain());
             dictionary.deleteWordList(index);
             System.out.println("Tu " + target + " da duoc xoa khoi tu dien.");
@@ -76,9 +106,9 @@ public class DictionaryManagement {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Nhap tu muon cap nhat: ");
         String target = scanner.nextLine();
-        int index = CommonFunction.searchToIndex(dictionary.getWordList(), target);
-        Word word = CommonFunction.search(dictionary.getWordList(), target);
-        if (index >= 0) {
+        int index = CommonFunction.BNSToIndex(dictionary.getWordList(), target);
+        if (index<dictionary.getWordList().size()&&dictionary.getWordList().get(index).getWord_target().equals(target)) {
+            Word word=dictionary.getWordList().get(index);
             System.out.println(word.getWord_target() + ": " + word.getWord_explain());
             System.out.print("Nhap nghia muon cap nhat: ");
             String explain = scanner.nextLine();

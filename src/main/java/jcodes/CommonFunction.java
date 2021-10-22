@@ -23,6 +23,23 @@ public class CommonFunction {
         return -1;
     }
 
+    public static int BNSToIndex(Vector<Word> list,String string) {
+        int left=0;
+        int right=list.size()-1;
+        while(right>=left) {
+            int mid=left+(right-left)/2;
+            if(list.get(mid).getWord_target().compareTo(string)>0) {
+                right=mid-1;
+            }else if(list.get(mid).getWord_target().compareTo(string)<0) {
+                left=mid+1;
+            } else if(list.get(mid).getWord_target().compareTo(string)==0) {
+                return mid;
+            }
+        }
+        //System.out.println(left+" "+(left+(right-left)/2)+" "+right);
+        return left+(right-left)/2;
+    }
+
     //show danh sach tu
     public static void showListWord(Vector<Word> list) {
         for (Word word : list) {
@@ -48,4 +65,35 @@ public class CommonFunction {
             }
         }
     }
+
+    public static int partition(Vector<Word>a,int low,int high) {
+        Word pivot=a.get(high);
+        int i=low-1;
+        for(int j=low;j<high;j++)
+        {
+            //cout<<i<<" "<<j<<endl;
+            if(a.get(j).getWord_target().compareTo(pivot.getWord_target())<=0) {
+                i++;
+                Word temp=a.get(i);
+                a.set(i,a.get(j));
+                a.set(j,temp);
+            }
+        }
+        Word temp=a.get(i+1);
+        a.set(i+1,a.get(high));
+        a.set(high,temp);
+        return i+1;
+    }
+
+    public static void quickSort(Vector<Word>a,int low,int high) {
+        if(low<high) {
+            int pivot=partition(a,low,high);
+            quickSort(a,low,pivot-1);
+            quickSort(a,pivot+1,high);
+        }
+    }
+
+
+
+
 }
