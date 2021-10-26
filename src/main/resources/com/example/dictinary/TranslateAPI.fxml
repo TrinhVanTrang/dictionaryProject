@@ -10,7 +10,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.image.Image?>
 <?import com.jfoenix.controls.JFXButton?>
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="490.0" prefWidth="580.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.dictinary.TranslateAPI">
+<AnchorPane stylesheets="@style.CSS" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="490.0" prefWidth="580.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.dictinary.TranslateAPI">
     <children>
         <Pane prefHeight="200.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
             <children>
@@ -28,12 +28,12 @@
         </Pane>
         <AnchorPane layoutY="200.0" prefHeight="90.0" prefWidth="580.0" style="-fx-background-color: #C3D6E0;">
             <children>
-                <JFXButton layoutX="60.0" layoutY="20.0" onAction="#EngToVi" prefHeight="50.0" prefWidth="200.0" text="Anh - Việt" >
+                <JFXButton styleClass="menuItem" layoutX="60.0" layoutY="20.0" onAction="#EngToVi" prefHeight="50.0" prefWidth="200.0" text="Anh - Việt" >
                     <font>
                         <Font size="24.0" />
                     </font>
                 </JFXButton>
-                <JFXButton layoutX="320.0" layoutY="20.0" onAction="#ViToEng" prefHeight="50.0" prefWidth="200.0" text="Việt - Anh">
+                <JFXButton styleClass="menuItem" layoutX="320.0" layoutY="20.0" onAction="#ViToEng" prefHeight="50.0" prefWidth="200.0" text="Việt - Anh">
                     <font>
                         <Font size="24.0" />
                     </font>

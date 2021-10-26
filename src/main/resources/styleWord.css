@@ -1,3 +1,18 @@
 h1 {
+    font-size:40px
+    font-weight:bold;
+    color:#F50D2D;
+}
+
+i{
     color:#2446EA;
 }
+
+h2{
+    color:#2446EA;
+    font-weight:bold;
+}
+li{
+    color:BLACK
+}
+

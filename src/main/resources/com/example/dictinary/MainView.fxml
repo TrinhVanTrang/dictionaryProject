@@ -16,7 +16,7 @@
 <?import javafx.scene.text.Font?>
 <?import com.jfoenix.controls.JFXButton?>
 
-<BorderPane prefHeight="550.0" prefWidth="780.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.dictinary.DictionaryController">
+<BorderPane stylesheets="@style.CSS" prefHeight="550.0" prefWidth="780.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.dictinary.DictionaryController">
     <top>
         <Pane prefHeight="60.0" prefWidth="780.0" style="-fx-background-color: #054072;" BorderPane.alignment="CENTER">
             <children>
