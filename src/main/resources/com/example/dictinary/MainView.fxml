@@ -1,16 +1,137 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.VBox?>
-
 <?import javafx.scene.control.Button?>
-<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.example.dictinary.DictionaryController">
-    <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
-    </padding>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.text.Font?>
+<?import com.jfoenix.controls.JFXButton?>
 
-    <Label fx:id="welcomeText"/>
-    <Button text="Hello!" onAction="#onHelloButtonClick"/>
-</VBox>
+<BorderPane prefHeight="550.0" prefWidth="780.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.dictinary.DictionaryController">
+    <top>
+        <Pane prefHeight="60.0" prefWidth="780.0" style="-fx-background-color: #054072;" BorderPane.alignment="CENTER">
+            <children>
+                <Label layoutX="23.0" layoutY="13.0" text="DICTIONARY" textFill="#e2f816">
+                    <font>
+                        <Font name="System Bold Italic" size="24.0" />
+                    </font>
+                </Label>
+                <ImageView fx:id="exit" fitHeight="25.0" fitWidth="25.0" layoutX="741.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@image/exit.png" />
+                    </image>
+                </ImageView>
+            </children>
+        </Pane>
+    </top>
+    <left>
+        <Pane prefHeight="490.0" prefWidth="200.0" style="-fx-background-color: #898992;" BorderPane.alignment="CENTER">
+            <children>
+                <VBox layoutY="63.0" prefHeight="225.0" prefWidth="200.0">
+                    <children>
+                        <JFXButton alignment="BOTTOM_LEFT" onAction="#Search" prefHeight="40.0" prefWidth="200.0" styleClass="menuButton" text="Search">
+                            <font>
+                                <Font size="18.0" />
+                            </font>
+                            <graphic>
+                                <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@image/search.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                        </JFXButton>
+                        <JFXButton alignment="BOTTOM_LEFT" onAction="#Dictionary" prefHeight="38.0" prefWidth="200.0" styleClass="menuButton" text="Dictinoary">
+                            <font>
+                                <Font size="18.0" />
+                            </font>
+                            <graphic>
+                                <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@image/dictionary.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                        </JFXButton>
+                        <JFXButton alignment="BOTTOM_LEFT" onAction="#MyWord" prefHeight="38.0" prefWidth="200.0" styleClass="menuButton" text="My word">
+                            <font>
+                                <Font size="18.0" />
+                            </font>
+                            <graphic>
+                                <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@image/likebook.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                        </JFXButton>
+                        <JFXButton alignment="BOTTOM_LEFT" onAction="#History" prefHeight="38.0" prefWidth="200.0" styleClass="menuButton" text="History">
+                            <font>
+                                <Font size="18.0" />
+                            </font>
+                            <graphic>
+                                <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@image/history.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                        </JFXButton>
+                        <JFXButton alignment="BOTTOM_LEFT" onAction="#TranslateAPI" prefHeight="38.0" prefWidth="200.0" styleClass="menuButton" text="Translate API">
+                            <font>
+                                <Font size="18.0" />
+                            </font>
+                            <graphic>
+                                <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@image/translate.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                        </JFXButton>
+                        <JFXButton alignment="BOTTOM_LEFT" onAction="#Quiz" prefHeight="38.0" prefWidth="200.0" styleClass="menuButton" text="Quiz">
+                            <font>
+                                <Font size="18.0" />
+                            </font>
+                            <graphic>
+                                <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@image/quiz.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                        </JFXButton>
+                        <JFXButton alignment="BOTTOM_LEFT" onAction="#Setting" prefHeight="38.0" prefWidth="200.0" styleClass="menuButton" text="Setting">
+                            <font>
+                                <Font size="18.0" />
+                            </font>
+                            <graphic>
+                                <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@image/setting.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                        </JFXButton>
+                    </children>
+                </VBox>
+            </children>
+        </Pane>
+    </left>
+    <center>
+        <AnchorPane prefHeight="491.0" prefWidth="675.0" BorderPane.alignment="CENTER">
+            <children>
+                <StackPane fx:id="contentArea" prefHeight="150.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+            </children>
+        </AnchorPane>
+    </center>
+</BorderPane>

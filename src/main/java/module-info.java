@@ -10,6 +10,12 @@ module com.example.dictinary {
     requires org.kordamp.bootstrapfx.core;
     requires eu.hansolo.tilesfx;
     requires java.sql;
+    requires javafx.media;
+    requires gtranslateapi;
+    requires jlayer;
+    requires jsapi;
+    requires cmu.time.awb;
+    requires freetts;
 
     opens com.example.dictinary to javafx.fxml;
     exports com.example.dictinary;

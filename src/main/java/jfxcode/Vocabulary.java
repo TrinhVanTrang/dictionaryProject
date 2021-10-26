@@ -7,6 +7,14 @@ public class Vocabulary {
     private String description;
     private String pronounce;
 
+    public Vocabulary() {
+        id=0;
+        word="";
+        html="";
+        description="";
+        pronounce="";
+    }
+
     public Vocabulary(int id, String word, String html, String description, String pronounce) {
         this.id = id;
         this.word = word;
@@ -14,6 +22,16 @@ public class Vocabulary {
         this.description = description;
         this.pronounce = pronounce;
     }
+
+    public Vocabulary(int id) {
+        this.id = id;
+        word="";
+        html="";
+        description="";
+        pronounce="";
+    }
+
+
 
     public int getId() {
         return id;
@@ -53,5 +71,18 @@ public class Vocabulary {
 
     public void setPronounce(String pronounce) {
         this.pronounce = pronounce;
+    }
+
+    public void setAll(int id, String word, String html, String description, String pronounce) {
+        this.setId(id);
+        this.setWord(word);
+        this.setHtml(html);
+        this.setDescription(description);
+        this.setPronounce(pronounce);
+    }
+
+    @Override
+    public String toString() {
+        return this.word;
     }
 }

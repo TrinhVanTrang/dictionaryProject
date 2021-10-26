@@ -1,5 +1,14 @@
 package jcodes;
 
+import com.sun.speech.freetts.Voice;
+import com.sun.speech.freetts.VoiceManager;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+
+import java.io.*;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.net.URLEncoder;
 import java.util.Vector;
 
 public class CommonFunction {
@@ -93,7 +102,55 @@ public class CommonFunction {
         }
     }
 
+    public static String translateText(String text ,String langfrom,String langto) throws UnsupportedEncodingException, IOException {
+        String urlStr = "https://script.google.com/macros/s/AKfycbyyOZ8m5BEhlL74JcbBs7VygJVeAO5NWMX_8edPVT0qnAPmvFA27DmOYLQrPLRPgtwJhA/exec" +
+                "?q=" + URLEncoder.encode(text, "UTF-8") +
+                "&target=" + langto +
+                "&source=" + langfrom;
+        //System.out.println(urlStr);
+        URL url = new URL(urlStr);
+        StringBuilder response = new StringBuilder();
+        HttpURLConnection con = (HttpURLConnection) url.openConnection();
+        con.setRequestProperty("User-Agent", "Mozilla/5.0");
+        BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
+        String inputLine;
+        while ((inputLine = in.readLine()) != null) {
+            response.append(inputLine);
+        }
+        in.close();
+        return response.toString();
+    }
 
 
+    public static void playAudio(String url) {
+        Media media=new Media(new File(url).toURI().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(media);
+        mediaPlayer.play();
+    }
+
+    public static void playAudio() {
+        Media media=new Media(new File("src/main/resources/com/example/dictinary/audio/clickButton.mp3").toURI().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(media);
+        mediaPlayer.play();
+    }
+
+    public static void textToSpeech(String text) {
+        System.setProperty("freetts.voices", "com.sun.speech.freetts.en.us.cmu_us_kal.KevinVoiceDirectory");
+        Voice voice = VoiceManager.getInstance().getVoice("kevin16");
+        if (voice != null) {
+            voice.allocate();
+        }
+        try {
+            voice.setRate(190);
+            voice.setPitch(150);
+            voice.setVolume(3);
+            voice.speak(text);
+            voice.deallocate();
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+    }
 
 }
