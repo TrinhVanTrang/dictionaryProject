@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.web.WebView?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.text.Font?>
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.dictinary.History"
+            prefHeight="490.0" prefWidth="580.0">
+    <children>
+        <ListView fx:id="listWord" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="100.0" />
+        <AnchorPane fx:id="showDetail" layoutX="37.0" layoutY="131.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: C6F5E9;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="100.0">
+            <children>
+                <WebView fx:id="output" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="0.0" />
+                <ImageView fx:id="voice" fitHeight="25.0" fitWidth="25.0" layoutX="540.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@image/voice.png" />
+                    </image>
+                </ImageView>
+                <ImageView fx:id="back" fitHeight="25.0" fitWidth="25.0" layoutX="540.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@image/return.png" />
+                    </image>
+                </ImageView>
+
+                <ImageView fx:id="isMyWord" fitHeight="25.0" fitWidth="25.0" layoutX="540.0" layoutY="65.0" pickOnBounds="true" preserveRatio="true" />
+            </children>
+        </AnchorPane>
+        <Pane layoutX="-6.0" layoutY="-9.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #1B7DD1;" AnchorPane.bottomAnchor="390.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+                <Button fx:id="search" layoutX="380.0" layoutY="30.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="80.0" style="-fx-background-color: #C6F5E9;" text="Search">
+                    <font>
+                        <Font name="System Bold Italic" size="18.0" />
+                    </font>
+                </Button>
+                <TextField fx:id="input" layoutX="125.0" layoutY="30.0" prefHeight="40.0" prefWidth="240.0" promptText=" Nhập từ cần tra">
+                    <font>
+                        <Font name="System Italic" size="18.0" />
+                    </font>
+                </TextField>
+            </children>
+        </Pane>
+        <ListView fx:id="listSearch" layoutX="125.0" layoutY="80.0" prefHeight="250.0" prefWidth="240.0" style="-fx-background-color: #C3D4D4;" />
+    </children>
+</AnchorPane>
